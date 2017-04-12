@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JHSecretLabelTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ew-mN-Dh0" customClass="JHSecretLabel" customModule="JHSecretLabelTest" customModuleProvider="target">
+                                <rect key="frame" x="37" y="171.5" width="300" height="224"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="fjS-Og-ETb"/>
+                                </constraints>
+                                <string key="text">An iPod, a phone, an internet mobile communicator... these are NOT three separate devices! And we are calling it iPhone! Today Apple is going to reinvent the phone. And here it is.</string>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="9GS-tb-ebE">
+                                <rect key="frame" x="79" y="563" width="217" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bil-Rd-rTk">
+                                        <rect key="frame" x="0.0" y="0.0" width="73" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Show Up"/>
+                                        <connections>
+                                            <action selector="showUpAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SAQ-Ji-I0f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgX-Qc-ErA">
+                                        <rect key="frame" x="143" y="0.0" width="74" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Fade Out"/>
+                                        <connections>
+                                            <action selector="fadeOutAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rhP-f4-suH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32135215262506683" green="0.48521090126040028" blue="0.7146058058375635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.68991324193136738" green="0.98529260090584292" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2ew-mN-Dh0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BWV-eo-C6n"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9GS-tb-ebE" secondAttribute="bottom" constant="70" id="LeD-gb-48X"/>
+                            <constraint firstItem="9GS-tb-ebE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tmp-Xy-aWy"/>
+                            <constraint firstItem="2ew-mN-Dh0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="htE-52-Vc7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fadeOutBtn" destination="SgX-Qc-ErA" id="ak4-dK-4Zw"/>
+                        <outlet property="showUpBtn" destination="bil-Rd-rTk" id="mFp-dG-7uY"/>
+                        <outlet property="testLabel" destination="2ew-mN-Dh0" id="lX3-xC-0mz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
