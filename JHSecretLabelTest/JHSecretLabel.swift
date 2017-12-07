@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum JHSecretLabelStytle {
+    case none
+    case secrect
+    case oneChar
+    case oneWord
+    case oneLine
+}
+
 class JHSecretLabel: UILabel {
     
     // Open properties
@@ -33,6 +41,14 @@ class JHSecretLabel: UILabel {
     }
     
     open var autoStarting: Bool = false
+    
+    open var style: JHSecretLabelStytle = .none {
+        didSet {
+            self.setupAttributedString()
+            self.calculateShowUpDelaysAndDurations()
+            self.calculateFadeOutDelaysAndDurations()
+        }
+    }
 
     // Private properties
     private var beginTime: CFTimeInterval?
@@ -46,16 +62,19 @@ class JHSecretLabel: UILabel {
     private var displayLink: CADisplayLink?
     
     // Store the durration for each character
-    private var charShowUpDurations: [Double] = []
-    private var charShowUpDelays: [Double] = []
+    private var showUpDurations: [Double] = []
+    private var showUpDelays: [Double] = []
     
-    private var charFadeOutDurations: [Double] = []
-    private var charFadeOutDelays: [Double] = []
+    private var fadeOutDurations: [Double] = []
+    private var fadeOutDelays: [Double] = []
+    
+    // first Int is location, sec Int is length
+    private var rangesOfWords: [(Int, Int)] = []
     
     private var mutableAttributedString: NSMutableAttributedString?
     
     override var attributedText: NSAttributedString? {
-        didSet {            
+        didSet {
             self.setupAttributedString()
             self.calculateShowUpDelaysAndDurations()
             self.calculateFadeOutDelaysAndDurations()
@@ -71,32 +90,64 @@ class JHSecretLabel: UILabel {
     }
     
     private func calculateShowUpDelaysAndDurations() {
-        // clean the old data
-        charShowUpDurations.removeAll()
-        charShowUpDelays.removeAll()
-        // calculate the new data
-        guard let attributedText = self.mutableAttributedString, attributedText.length > 0 else {
+        if style == .none {
             return
         }
-        for i in 0...attributedText.length - 1 {
-            charShowUpDelays.append(Double(arc4random_uniform(UInt32(showUpDuration / 2.0 * 100.0))) / 100.0)
-            let remaining = showUpDuration - charShowUpDelays[i]
-            charShowUpDurations.append(Double(arc4random_uniform(UInt32(remaining * 100.0))) / 100.0)
+        // clean the old data
+        showUpDurations.removeAll()
+        showUpDelays.removeAll()
+        // calculate the new data
+        guard let attributedText = self.mutableAttributedString, attributedText.length > 0, style != .none else {
+            return
         }
+        
+        switch style {
+        case .secrect:
+            
+            
+            for i in 0...attributedText.length - 1 {
+                showUpDelays.append(Double(arc4random_uniform(UInt32(showUpDuration / 2.0 * 100.0))) / 100.0)
+                let remaining = showUpDuration - showUpDelays[i]
+                showUpDurations.append(Double(arc4random_uniform(UInt32(remaining * 100.0))) / 100.0)
+            }
+
+        case .oneWord:
+            let words = attributedText.string.characters.split(separator: " ").map(String.init)
+            let showUpDurationForOneWord = showUpDuration / Double(words.count)
+            
+            rangesOfWords.removeAll()
+            
+            
+            
+            for i in 0...words.count - 1 {
+                
+                
+                showUpDelays.append(showUpDurationForOneWord * Double(i))
+                showUpDurations.append(showUpDurationForOneWord)
+            }
+
+    
+        default:
+            break
+        }
+        
     }
     
     private func calculateFadeOutDelaysAndDurations() {
+        if style == .none {
+            return
+        }
         // clean the old data
-        charFadeOutDelays.removeAll()
-        charFadeOutDurations.removeAll()
+        fadeOutDelays.removeAll()
+        fadeOutDurations.removeAll()
         // calculate the new data
         guard let attributedText = self.mutableAttributedString, attributedText.length > 0 else {
             return
         }
         for i in 0...attributedText.length - 1 {
-            charFadeOutDelays.append(Double(arc4random_uniform(UInt32(fadeOutDuration / 2.0 * 100.0))) / 100.0)
-            let remaining = fadeOutDuration - charFadeOutDelays[i]
-            charFadeOutDurations.append(Double(arc4random_uniform(UInt32(remaining * 100.0))) / 100.0)
+            fadeOutDelays.append(Double(arc4random_uniform(UInt32(fadeOutDuration / 2.0 * 100.0))) / 100.0)
+            let remaining = fadeOutDuration - fadeOutDelays[i]
+            fadeOutDurations.append(Double(arc4random_uniform(UInt32(remaining * 100.0))) / 100.0)
         }
         
     }
@@ -140,7 +191,12 @@ class JHSecretLabel: UILabel {
     }
     
     open func showUpWith(Completion completion: (() -> Void)?) {
-        
+        if style == .none {
+            if let completion = completion {
+                completion()
+            }
+            return
+        }
         if !isAnimating && !fadingOut {
             animationCompletion = completion
             self.startAnimationWithDuration(Duration: self.showUpDuration)
@@ -152,7 +208,12 @@ class JHSecretLabel: UILabel {
     }
     
     open func fadeOutWith(Completion completion: (() -> Void)?) {
-        
+        if style == .none {
+            if let completion = completion {
+                completion()
+            }
+            return
+        }
         if !isAnimating && fadingOut {
             animationCompletion = completion
             self.startAnimationWithDuration(Duration: self.fadeOutDuration)
@@ -188,18 +249,18 @@ class JHSecretLabel: UILabel {
                 let curCharAlpha = (value as! UIColor).cgColor.alpha
                 
                 let shouldUpdateAlpha = (self.fadingOut && curCharAlpha > 0) || (!self.fadingOut && curCharAlpha < 1)
-                
+    
                 if !shouldUpdateAlpha {
                     return
                 }
                 
                 if fadingOut {
-                    let newCharAlpha = 1 - CGFloat((curTime - self.beginTime! - charFadeOutDelays[index]) / charFadeOutDurations[index])
+                    let newCharAlpha = 1 - CGFloat((curTime - self.beginTime! - fadeOutDelays[index]) / fadeOutDurations[index])
                     
                     let newCharColor = self.textColor.withAlphaComponent(newCharAlpha)
                     self.mutableAttributedString?.addAttribute(NSForegroundColorAttributeName, value: newCharColor, range: range)
                 } else {
-                    let newCharAlpha = CGFloat((curTime - self.beginTime! - charShowUpDelays[index]) / charShowUpDurations[index])
+                    let newCharAlpha = CGFloat((curTime - self.beginTime! - showUpDelays[index]) / showUpDurations[index])
                 
                     let newCharColor = self.textColor.withAlphaComponent(newCharAlpha)
                     self.mutableAttributedString?.addAttribute(NSForegroundColorAttributeName, value: newCharColor, range: range)
@@ -225,12 +286,17 @@ class JHSecretLabel: UILabel {
     }
     
     private func initTheAttributeStringFromAttributedText(_ attributedString: NSAttributedString) -> NSMutableAttributedString {
-        // Make each charactor's alpha to 0
-        let tempMtbAttributedString = NSMutableAttributedString(attributedString: attributedString)
-        let color = self.textColor.withAlphaComponent(0)
-        tempMtbAttributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, tempMtbAttributedString.length))
         
-        return tempMtbAttributedString
+        if style == .none {
+            return NSMutableAttributedString(attributedString: attributedString)
+        } else {
+            // Make each charactor's alpha to 0
+            let tempMtbAttributedString = NSMutableAttributedString(attributedString: attributedString)
+            let color = self.textColor.withAlphaComponent(0)
+            tempMtbAttributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, tempMtbAttributedString.length))
+        
+            return tempMtbAttributedString
+        }
     }
 
 }

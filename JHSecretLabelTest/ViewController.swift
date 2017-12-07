@@ -22,7 +22,8 @@ class ViewController: UIViewController {
         showUpBtn.isEnabled = true
         fadeOutBtn.isEnabled = false
         
-        
+        testLabel.style = .secrect
+        testLabel.text = "An iPod, a phone, an internet mobile communicator...\n these are NOT three separate devices! And we are calling it iPhone! Today Apple is going to reinvent the phone.\n And here it is."
     }
 
     override func didReceiveMemoryWarning() {

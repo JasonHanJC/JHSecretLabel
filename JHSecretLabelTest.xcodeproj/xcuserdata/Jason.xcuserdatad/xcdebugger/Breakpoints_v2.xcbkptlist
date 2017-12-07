@@ -9,45 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513645039.435951"
+            filePath = "JHSecretLabelTest/JHLabelBase.swift"
+            timestampString = "513887853.832532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "showUpDuration"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513645040.805864"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "fadeOutDuration"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513648912.436549"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "calculateShowUpDelaysAndDurations()"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "showUp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513648912.436549"
+            filePath = "JHSecretLabelTest/JHLabelBase.swift"
+            timestampString = "513887853.832532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "calculateFadeOutDelaysAndDurations()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "showUpWith(Completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,12 +41,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513668572.02354"
+            filePath = "JHSecretLabelTest/JHLabelBase.swift"
+            timestampString = "513887853.832532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "startAnimationWithDuration(Duration:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,43 +58,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513649943.241993"
+            timestampString = "513894012.623808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "calculateShowUpDelaysAndDurations()"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "init(coder:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "JHSecretLabelTest.JHSecretLabel.(calculateShowUpDelaysAndDurations in _B36CBF25625518F0DF372C8BCCFB3393) () -&gt; ()"
+                  symbolName = "JHSecretLabelTest.JHSecretLabel.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;JHSecretLabelTest.JHSecretLabel&gt;"
                   moduleName = "JHSecretLabelTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Desktop/JHSecretLabelTest/JHSecretLabelTest/JHSecretLabel.swift"
-                  timestampString = "513650176.771686"
+                  timestampString = "513891231.678049"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "296">
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "9">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "JHSecretLabelTest.JHSecretLabel.(calculateShowUpDelaysAndDurations in _B36CBF25625518F0DF372C8BCCFB3393) () -&gt; ()"
+                  symbolName = "JHSecretLabelTest.JHSecretLabel.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;JHSecretLabelTest.JHSecretLabel&gt;"
                   moduleName = "JHSecretLabelTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Jason/Desktop/JHSecretLabelTest/JHSecretLabelTest/JHSecretLabel.swift"
-                  timestampString = "513650176.773023"
+                  timestampString = "513891231.679612"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "324">
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "38">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -138,43 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513649955.256914"
+            timestampString = "513893583.736933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "calculateShowUpDelaysAndDurations()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513649955.787353"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "calculateShowUpDelaysAndDurations()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JHSecretLabelTest/JHSecretLabel.swift"
-            timestampString = "513649956.253733"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "calculateShowUpDelaysAndDurations()"
             landmarkType = "7">
          </BreakpointContent>
